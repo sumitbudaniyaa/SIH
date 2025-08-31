@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+::-webkit-scrollbar{
+    display: hidden;
+}
+
+body{
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+}
