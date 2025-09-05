@@ -1,9 +1,19 @@
 const Complaint = require("../models/complaint");
 const cloudinary = require("../config/cloudinary");
 
-const createComplaint = async (req, res) => {
+exports.getComplaints = async (req, res) => {
   try {
-    const complaint= req.body;
+    const complaints = await Complaint.find();
+    return res.status(200).json({ complaints });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ message: "Error in fetching complaints" });
+  }
+};
+
+exports.createComplaint = async (req, res) => {
+  try {
+    const complaint = req.body;
 
     complaintPhone = parseInt(complaint.phone);
     complaint.phone = complaintPhone;
@@ -27,6 +37,3 @@ const createComplaint = async (req, res) => {
     return res.status(500).json({ message: "Error creating complaint" });
   }
 };
-
-
-module.exports = {createComplaint};
