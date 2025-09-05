@@ -1,6 +1,5 @@
 const Complaint = require("../models/complaint");
 const cloudinary = require("../config/cloudinary");
-const complaint = require("../models/complaint");
 
 exports.getComplaints = async (req, res) => {
   try {
@@ -17,6 +16,8 @@ exports.trackComplaint = async (req, res) => {
     const { complaintId } = req.body;
     const complaint = await Complaint.findOne({ complaintId });
 
+    if(!complaint) {return res.status(404).json({message: "Invalid tracking id"});
+  }
     return res.status(200).json({ complaint });
   } catch (err) {
     console.log(err);
@@ -50,6 +51,8 @@ exports.createComplaint = async (req, res) => {
     return res.status(500).json({ message: "Error creating complaint" });
   }
 };
+
+
 
 exports.updateComplaint = async (req, res) => {
   try {

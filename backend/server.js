@@ -17,6 +17,6 @@ app.use('/api/complaintRoutes', complaintRoutes);
 
 
 
-app.listen(PORT,"0.0.0.0", ()=> { 
+app.listen(PORT, ()=> { 
     console.log(`SERVER RUNNING ON PORT ${PORT}`)
 });
