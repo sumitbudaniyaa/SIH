@@ -1,10 +1,14 @@
 @import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
 
-::-webkit-scrollbar{
-    display: hidden;
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 body{
   font-family: "Poppins", sans-serif;
   font-style: normal;
+  background: #e8f0f4b9;
+  overflow-x: hidden;
 }

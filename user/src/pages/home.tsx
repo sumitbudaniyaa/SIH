@@ -79,6 +79,7 @@ const Home = () => {
     e.preventDefault();
 
     if(complaint.category === "None") {toast.error("Please select a valid category"); return;}
+    if(complaint.photo === ""){toast.error("Please upload a photo"); return;}
 
     try {
       setLoading(true);
@@ -102,6 +103,7 @@ const Home = () => {
         description: "",
         photo: "",
       });
+      getLocation();
     } catch (err: any) {
       toast.error(err.response?.data?.message);
       console.log(err);

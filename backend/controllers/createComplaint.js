@@ -8,8 +8,6 @@ const createComplaint = async (req, res) => {
     complaintPhone = parseInt(complaint.phone);
     complaint.phone = complaintPhone;
 
-    
-
     const uploadPhoto = await cloudinary.uploader.upload(complaint.photo, {
       folder: "Photo",
     });
@@ -19,10 +17,13 @@ const createComplaint = async (req, res) => {
 
     const newComplaint = await new Complaint(complaint);
 
-   await newComplaint.save();
+    newComplaint.complaintId = `${newComplaint.phone}${newComplaint._id.toString().slice(-3)}`;
+
+    await newComplaint.save();
 
     return res.status(200).json({ message: "Complaint created" });
   } catch (err) {
+    console.log(err);
     return res.status(500).json({ message: "Error creating complaint" });
   }
 };

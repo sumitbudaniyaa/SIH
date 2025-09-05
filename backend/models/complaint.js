@@ -9,6 +9,10 @@ const complaintSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  complaintId: {
+    type: String,
+    unique: true
+  },
   photo: {
     type: String,
     required: true,
