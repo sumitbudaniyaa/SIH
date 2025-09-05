@@ -1,14 +1,12 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
+const complaintController = require("../controllers/complaintController.js");
 
-
-
-const {createComplaint} = require('../controllers/createComplaint');
-const {getComplaints} = require('../controllers/getComplaints');
-
-
-router.post('/createComplaint', createComplaint);
-router.get('/getComplaints', getComplaints);
+router.post("/createComplaint", complaintController.createComplaint);
+router.get("/getComplaints", complaintController.getComplaints);
+router.post("/trackComplaint", complaintController.trackComplaint);
+router.post("/updateComplaint", complaintController.updateComplaint);
 
 module.exports = router;
+
