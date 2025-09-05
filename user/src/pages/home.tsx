@@ -51,6 +51,7 @@ const Home = () => {
         toast.error(
           "Could not get your location. Please allow location access."
         );
+        console.log(err);
       }
     );
   };

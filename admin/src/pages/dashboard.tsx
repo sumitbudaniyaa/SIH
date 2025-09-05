@@ -97,7 +97,7 @@ const Dashboard = () => {
                       }`}
                     >
                       <input
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        onChange={() => {
                           updateComplaint(complaint?.complaintId, "Progress");
                         }}
                         type="checkbox"
@@ -133,7 +133,7 @@ const Dashboard = () => {
                       }`}
                     >
                       <input
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        onChange={() => {
                           updateComplaint(complaint?.complaintId, "Solved");
                         }}
                         type="checkbox"
