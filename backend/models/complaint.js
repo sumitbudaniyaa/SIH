@@ -11,7 +11,7 @@ const complaintSchema = new mongoose.Schema({
   },
   complaintId: {
     type: String,
-    unique: true
+    unique: true,
   },
   photo: {
     type: String,
@@ -19,23 +19,29 @@ const complaintSchema = new mongoose.Schema({
   },
   photo_publicId: {
     type: String,
-    require: true
+    require: true,
   },
   category: {
     type: String,
     required: true,
-    enum: ['Road', 'Sewage']
+    enum: ["Road", "Sewage"],
   },
   description: {
     type: String,
     required: true,
   },
- location: {
-  type: { type: String, enum: ['Point'], required: true },
-  coordinates: { type: [Number], required: true }
-},
+  location: {
+    type: { type: String, enum: ["Point"], required: true },
+    coordinates: { type: [Number], required: true },
+  },
+  status: {
+    type: String,
+    enum: ["Pending", "Progress", "Solved"],
+    default: "Pending",
+  },
 });
 
 complaintSchema.index({ location: "2dsphere" });
 
-module.exports =  mongoose.model('Complaint' ,complaintSchema);
+module.exports = mongoose.model("Complaint", complaintSchema);
+
